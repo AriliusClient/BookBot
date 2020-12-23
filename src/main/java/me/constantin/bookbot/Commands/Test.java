@@ -11,6 +11,6 @@ public class Test extends Base {
 
     @Override
     public void run(String[] args) {
-        MinecraftClient.getInstance().player.sendMessage(Text.of("Cum"),false);
+        MinecraftClient.getInstance().player.sendMessage(Text.of("Cum"), false);
     }
 }

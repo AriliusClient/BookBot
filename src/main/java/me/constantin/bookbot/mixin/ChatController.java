@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerEntity.class)
 public class ChatController {
-    @Inject(at=@At("HEAD"),method="sendChatMessage",cancellable = true)
+    @Inject(at = @At("HEAD"), method = "sendChatMessage", cancellable = true)
     public void sendChatMessage(String msg, CallbackInfo cbi) {
         if (msg.toLowerCase().startsWith("@bb")) {
             cbi.cancel();

@@ -10,9 +10,9 @@ import net.minecraft.text.Text;
 
 import java.util.Random;
 
-public class BinaryBook extends Base{
+public class BinaryBook extends Base {
     public BinaryBook() {
-        super("binarybook","binarybook (boundary: Integer)","Generates a block with completely random data.");
+        super("binarybook", "binarybook (boundary: Integer)", "Generates a block with completely random data.");
     }
 
     @Override
@@ -23,31 +23,32 @@ public class BinaryBook extends Base{
             boundaryI = args[1];
             try {
                 boundary = Integer.parseInt(boundaryI);
-            } catch (Exception exc) {}
+            } catch (Exception exc) {
+            }
         }
         ItemStack stack = MinecraftClient.getInstance().player.inventory.getMainHandStack();
         if (Item.getRawId(stack.getItem()) != 825) {
-            MinecraftClient.getInstance().player.sendMessage(Text.of("Man please hold a book and quill so this shit WORKS"),false);
+            MinecraftClient.getInstance().player.sendMessage(Text.of("Man please hold a book and quill so this shit WORKS"), false);
             return;
         }
         //MinecraftClient.getInstance().player.sendMessage(Text.of(Item.getRawId(stack.getItem())+""),true);
-        MinecraftClient.getInstance().player.sendMessage(Text.of("Writing book data..."),false);
+        MinecraftClient.getInstance().player.sendMessage(Text.of("Writing book data..."), false);
         ListTag l = new net.minecraft.nbt.ListTag();
-        for(int i = 0;i<100;i++) {
+        for (int i = 0; i < 100; i++) {
             String data = "";
             Random rnd = new Random();
-            for(int n = 0;n<266;n++) {
-                String crt = ((char) (rnd.nextInt(boundary))+"");
+            for (int n = 0; n < 266; n++) {
+                String crt = ((char) (rnd.nextInt(boundary)) + "");
                 if (rnd.nextBoolean()) crt = crt.toUpperCase();
                 data += crt;
             }
             l.add(StringTag.of(data));
         }
         CompoundTag tag = new CompoundTag();
-        tag.put("pages",l);
-        MinecraftClient.getInstance().player.sendMessage(Text.of("Setting book NBT..."),false);
+        tag.put("pages", l);
+        MinecraftClient.getInstance().player.sendMessage(Text.of("Setting book NBT..."), false);
         stack.setTag(tag);
-        MinecraftClient.getInstance().player.sendMessage(Text.of("Done!"),false);
+        MinecraftClient.getInstance().player.sendMessage(Text.of("Done!"), false);
         super.run(args);
     }
 }
