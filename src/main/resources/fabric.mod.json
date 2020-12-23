@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "bookbot",
+  "version": "${version}",
+  "name": "BookBot",
+  "description": "BookBot for duping or other purposes",
+  "authors": [
+    "Constantin"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.constantin.bookbot.client.BookBotClient"
+    ],
+    "main": [
+      "me.constantin.bookbot.BookBot"
+    ]
+  },
+  "mixins": [
+    "BookBot.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "minecraft": "1.16.4"
+  }
+}
