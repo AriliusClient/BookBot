@@ -12,6 +12,7 @@ public class Manager {
         commands.add(new Help());
         commands.add(new AsciiBook());
         commands.add(new BinaryBook());
+        commands.add(new DupeBook());
     }
 
     public List<Base> get() {
